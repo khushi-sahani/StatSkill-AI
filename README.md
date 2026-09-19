@@ -1,44 +1,36 @@
-# 📊 StatSkill AI
+# StatSkill AI
 
 **AI-powered competency assessment and personalized learning platform**
 
-StatSkill AI is a full-stack learning platform designed to assess a user's competencies, identify skill gaps, and provide personalized learning recommendations.
+StatSkill AI is a full-stack application designed to assess user competencies, identify skill gaps, and provide personalized learning support using AI.
 
-The platform combines **AI-powered assessment, skill-gap analysis, MCQ generation, and personalized course recommendations** in a single application.
-
----
-
-## 🚀 Features
+## Features
 
 * 📝 **Competency Assessment**
 
-  * Assess knowledge across areas such as Python, SQL, Sampling, Data Privacy, and Communication.
+  * Assess skills across multiple competency areas.
 
-* 🤖 **AI-Powered Skill Gap Analysis**
+* 🤖 **AI-Powered MCQ Generation**
 
-  * Analyze assessment performance.
-  * Identify areas that need improvement.
-  * Prioritize skill gaps.
+  * Generates exactly 5 questions.
+  * Each question contains 4 options.
+  * Answers are matched to the provided options.
+  * Questions are generated based only on the provided training material.
+  * Includes short and clear explanations.
 
-* 🧠 **AI-Generated MCQs**
+* 📊 **Skill Gap Analysis**
 
-  * Generate practice questions based on selected topics.
+  * Identifies areas where the learner needs improvement based on assessment performance.
 
-* 📚 **Personalized Learning Recommendations**
+* 📚 **Personalized Learning**
 
-  * Recommend relevant learning resources based on identified skill gaps.
+  * Provides learning recommendations based on identified competency gaps.
 
 * 📄 **Training Material**
 
-  * Generate and use structured training material for learning and assessment.
+  * Uses structured training material as the basis for AI-generated assessment content.
 
-* 🌐 **Full-Stack Architecture**
-
-  * React frontend connected with a FastAPI backend.
-
----
-
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -54,33 +46,31 @@ The platform combines **AI-powered assessment, skill-gap analysis, MCQ generatio
 * FastAPI
 * SQLAlchemy
 * SQLite
-* REST APIs
+* REST API
 
 ### AI
 
 * Google Gemini API
 
-### Tools
+### Development Tools
 
 * Git
 * GitHub
 * VS Code
 
----
-
-## 🏗️ Project Structure
+## Project Structure
 
 ```text
 StatSkill-AI/
 │
 ├── backend/
 │   ├── main.py
+│   ├── ai_service.py
 │   ├── assessment.py
 │   ├── competencies.py
 │   ├── courses.py
 │   ├── database.py
 │   ├── models.py
-│   ├── ai_service.py
 │   ├── pdf_service.py
 │   └── ...
 │
@@ -90,79 +80,57 @@ StatSkill-AI/
 │   │   ├── App.css
 │   │   ├── index.css
 │   │   └── main.jsx
-│   │
 │   ├── public/
 │   ├── package.json
 │   └── vite.config.js
 │
-└── .gitignore
+├── .gitignore
+└── README.md
 ```
 
----
+## Getting Started
 
-## ⚙️ Getting Started
-
-### 1. Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/khushi-sahani/StatSkill-AI.git
 cd StatSkill-AI
 ```
 
----
+### Backend
 
-## 🔧 Backend Setup
-
-Open a terminal inside the project directory.
-
-### Create virtual environment
+Create and activate a virtual environment:
 
 ```bash
 python -m venv .venv
 ```
 
-### Activate the environment
-
-**Windows PowerShell:**
+Windows PowerShell:
 
 ```powershell
 .venv\Scripts\Activate.ps1
 ```
 
-### Install dependencies
+Install the required Python packages according to the project's backend dependencies.
 
-If a `requirements.txt` file is present:
+Create a `.env` file inside `backend/` and add your Gemini API configuration.
 
-```bash
-pip install -r requirements.txt
-```
+**Never commit API keys or other secrets to GitHub.**
 
-### Configure environment variables
-
-Create a `.env` file inside the `backend` directory:
-
-```text
-GEMINI_API_KEY=your_api_key_here
-```
-
-**Do not commit your API key to GitHub.**
-
-### Run the backend
+Start the FastAPI server:
 
 ```bash
 cd backend
 uvicorn main:app --reload
 ```
 
-The API will be available at:
+API documentation:
 
 ```text
-http://127.0.0.1:8000
+http://127.0.0.1:8000/docs
 ```
 
----
-
-## 💻 Frontend Setup
+### Frontend
 
 Open another terminal:
 
@@ -172,64 +140,65 @@ npm install
 npm run dev
 ```
 
-The frontend will normally be available at:
+The development server will normally run at:
 
 ```text
 http://localhost:5173
 ```
 
----
+## AI MCQ Generation
 
-## 🔌 API
+The AI assessment system uses the provided training material to generate structured multiple-choice questions.
 
-The backend provides REST API endpoints for functionality such as:
+The generation rules require:
 
-* Assessment
+* 5 questions per generation
+* 4 options per question
+* The correct answer must match one of the options
+* Questions must be based only on the training material
+* Short explanations for answers
+
+The generated response is parsed as JSON before being returned by the backend.
+
+## API
+
+The backend exposes REST API endpoints for application functionality such as:
+
+* Competency assessment
 * MCQ generation
 * Skill-gap analysis
-* Course recommendations
-* Training material
+* Learning recommendations
 
-FastAPI also provides interactive API documentation.
-
-After starting the backend, open:
+FastAPI's interactive API documentation is available at:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
 
----
+## Security
 
-## 🔐 Security
+Sensitive configuration such as API keys should be stored in environment variables and excluded from Git using `.gitignore`.
 
-API keys and other sensitive configuration values are stored using environment variables and are excluded from version control using `.gitignore`.
+## Future Improvements
 
----
+* User authentication
+* Cloud database integration
+* Learning progress tracking
+* Improved personalization
+* Advanced learner analytics
+* Production deployment
+* Expanded competency areas
 
-## 🔮 Future Improvements
-
-* User authentication and profiles
-* Persistent cloud database
-* Improved AI-based competency evaluation
-* Learning progress dashboard
-* More personalized course recommendations
-* Deployment of frontend and backend
-* Advanced analytics and progress tracking
-
----
-
-## 👩‍💻 Author
-
-**Khushi Sahani**
-
-B.Tech — Computer Science & Engineering
-
-GitHub: https://github.com/khushi-sahani
-
----
-
-## ⭐ Project Status
+## Project Status
 
 **In Development**
 
-StatSkill AI is being actively developed as a full-stack AI-powered learning and competency assessment project.
+StatSkill AI is being developed as a full-stack AI-powered competency assessment and personalized learning platform.
+
+## Author
+
+**Khushi Sahani**
+
+B.Tech Computer Science & Engineering
+
+GitHub: https://github.com/khushi-sahani
